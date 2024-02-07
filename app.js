@@ -63,26 +63,34 @@ class Kortlek {
   }
 }
 
-// 1. Skapa ett kortleks-objekt från klassen Kortlek
+// Här skapas ett kortleks-objekt från klassen Kortlek
 let kortlek = new Kortlek()
+
+// ******* Exempelkod *******
+// Här är fyra rader exempelkod som visar hur du kan lägga in kort i kortleken
 let kort = new Kort(valörer[0], färger[0]) // Lägger in ett kort i leken
 
 kortlek.laggTillKort(kort)
 kortlek.laggTillKort(new Kort(valörer[1], färger[0])) // Lägger ytterligare ett kort i leken.
 kortlek.visaLek() // alla kort i leken visas i konsollen.
 
-// 2. Skapa 52 kort som ni lägger till i erat kortleksobjekt.
+// ******* Slut exempelkod *******
+
+// ******* Dina uppgifter *******
+
+// 1. Skapa 52 kort som ni lägger till i erat kortleksobjekt.
 //   a) Skapa en for-slinga som med variabeln i itererar genom alla färger.
 //   b) Inuti den första for-slingan, skapa en ny for-slinga som med variabeln j itererar
 //       genom alla valörer.
-//   c) Nu kan ni i den nästlade for-slingan skapa ett nytt kort, och sedan pusha det till
+//   c) Nu kan ni i den nästlade for-slingan skapa ett nytt kort, och sedan lägga till  det till
 //       kortleks-objektet.
 //   d) Efter den nästlade for-slingan, testa att skriva ut alla kort med metoden visa_lek().
 
-// 3. Testa att blanda kortleken med blanda() och visa kortleken igen.
-// 4. Skapa en litet spel med hjälp av knapparna i sidan index.html
+// 2. Testa att blanda kortleken med blanda() och visa kortleken igen.
 
-// Spelet ska låta användaren välja fem kort (Du skapar alltså en kortlek och 'poppar' fem kort)
+// 3. Skapa en litet spel med hjälp av knapparna i sidan index.html
+
+// Spelet ska låta användaren välja fem kort (Du skapar alltså en kortlek och drar fem kort)
 // Lätt: Värdera hand ska gå igenom de fem korten och meddela om användaren har ett par.
 // Medel: Värdera hand ska även kunna märka om användaren har triss eller kåk.
 // Svår: Värdera hand ska meddela om användaren har någon giltig pokerhand.
