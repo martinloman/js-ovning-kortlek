@@ -80,6 +80,17 @@ kortlek.visaLek() // alla kort i leken visas i konsollen.
 
 // 1. Skapa 52 kort som ni lägger till i erat kortleksobjekt.
 //   a) Skapa en for-slinga som med variabeln i itererar genom alla färger.
+for (let i = 0; i < färger.length; i++) {
+  const färg = färger[i]
+  for (let j = 0; j < valörer.length; j++) {
+    const valör = valörer[j]
+    let kort = new Kort(valör, färg)
+    kortlek.laggTillKort(kort)
+  }
+}
+
+kortlek.visaLek()
+
 //   b) Inuti den första for-slingan, skapa en ny for-slinga som med variabeln j itererar
 //       genom alla valörer.
 //   c) Nu kan ni i den nästlade for-slingan skapa ett nytt kort, och sedan lägga till  det till
@@ -87,7 +98,9 @@ kortlek.visaLek() // alla kort i leken visas i konsollen.
 //   d) Efter den nästlade for-slingan, testa att skriva ut alla kort med metoden visa_lek().
 
 // 2. Testa att blanda kortleken med blanda() och visa kortleken igen.
-
+console.log("************** Blandar...")
+kortlek.blanda()
+kortlek.visaLek()
 // 3. Skapa en litet spel med hjälp av knapparna i sidan index.html
 
 // Spelet ska låta användaren välja fem kort (Du skapar alltså en kortlek och drar fem kort)
@@ -101,20 +114,27 @@ kortlek.visaLek() // alla kort i leken visas i konsollen.
  */
 function shuffle() {
   // Ska anropa metoden för att blanda kortleken
-  console.log("Shuffla shuffla!")
+  kortlek.blanda()
 }
 
 let hand = []
 
 function drawFiveCards() {
+  hand = [] //Tömmer eventuella kort på handen...
   // Ska dra fem kort, lägga dem i en array och visa dem med funktionen visaHand() nedan
-  console.log("Read em and weep!")
+  for (let i = 0; i < 5; i++) {
+    let dragetKort = kortlek.draKort()
+    hand.push(dragetKort)
+  }
+  visaHand(hand)
 }
 
 function valueHand() {
   // Ska värdera handen enligt pokerregler och skriva ut resultatet med
   // visaResultat(). T.ex. visaResultat("Du fick ett par")
-  console.log("Come on now!")
+  if (hasPair(hand)) {
+    visaResultat("Du fick ett par")
+  }
 }
 
 /**
@@ -140,8 +160,19 @@ function visaHand(hand) {
 }
 
 // visaHand anropas så här
-visaHand([new Kort("ace", "hearts")])
+// visaHand([new Kort("ace", "hearts"), new Kort("ace", "spades")])
 
 function visaResultat(str) {
   document.getElementById("resultat").innerText = str
+}
+
+function hasPair(hand) {
+  for (let i = 0; i < hand.length; i++) {
+    const kort = hand[i]
+    let noofSammaValör = hand.filter((k) => k.valör === kort.valör).length
+    if (noofSammaValör === 2) {
+      return true
+    }
+  }
+  return false
 }
